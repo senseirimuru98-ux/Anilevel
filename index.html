@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AniLevel — Life Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⚔️</div>
+      <div>
+        <div class="title">AniLevel</div>
+        <div class="subtitle">Level up your real life — anime style</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button id="btnTheme" class="btn ghost" title="Change theme">🎨 Theme</button>
+      <button id="btnReset" class="btn danger" title="Reset data">🗑️ Reset</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: PROFILE -->
+    <section class="card profile">
+      <div class="row">
+        <div class="avatar" id="avatar">🧑‍🚀</div>
+        <div class="grow">
+          <label class="label">Player Name</label>
+          <input id="playerName" class="input" placeholder="Wilson (or your anime name)" />
+        </div>
+      </div>
+
+      <div class="row gap">
+        <div class="stat">
+          <div class="statLabel">Level</div>
+          <div class="statValue" id="level">1</div>
+        </div>
+        <div class="stat">
+          <div class="statLabel">Rank</div>
+          <div class="statValue" id="rank">E</div>
+        </div>
+        <div class="stat">
+          <div class="statLabel">Streak</div>
+          <div class="statValue"><span id="streak">0</span> 🔥</div>
+        </div>
+      </div>
+
+      <div class="xpBlock">
+        <div class="xpTop">
+          <div class="xpText"><span id="xp">0</span> XP</div>
+          <div class="xpText" id="xpToNext">0 to next</div>
+        </div>
+        <div class="bar">
+          <div class="barFill" id="xpFill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row gap wrap">
+        <div class="pill">Daily Quests ✅</div>
+        <div class="pill">Side Quests 🎯</div>
+        <div class="pill">Boss Fight 🐉</div>
+      </div>
+
+      <p class="hint">
+        Tip: Complete quests to gain XP. Keep your streak by completing at least <b>1 quest per day</b>.
+      </p>
+    </section>
+
+    <!-- CENTER: QUESTS -->
+    <section class="card quests">
+      <div class="cardHeader">
+        <h2>Quests</h2>
+        <div class="seg">
+          <button class="segBtn active" data-tab="daily">Daily</button>
+          <button class="segBtn" data-tab="side">Side</button>
+          <button class="segBtn" data-tab="boss">Boss</button>
+        </div>
+      </div>
+
+      <form id="questForm" class="questForm">
+        <input id="questTitle" class="input" placeholder="Add a quest (ex: Study 30 min)" required />
+        <select id="questType" class="select">
+          <option value="daily">Daily</option>
+          <option value="side">Side</option>
+          <option value="boss">Boss</option>
+        </select>
+        <select id="questXP" class="select">
+          <option value="10">+10 XP (easy)</option>
+          <option value="20" selected>+20 XP (normal)</option>
+          <option value="35">+35 XP (hard)</option>
+          <option value="50">+50 XP (boss)</option>
+        </select>
+        <button class="btn primary" type="submit">➕ Add</button>
+      </form>
+
+      <div id="questList" class="questList"></div>
+    </section>
+
+    <!-- RIGHT: STATS -->
+    <section class="card stats">
+      <h2>Progress</h2>
+
+      <div class="mini">
+        <div class="miniLabel">Today’s XP</div>
+        <div class="miniValue" id="todayXP">0</div>
+      </div>
+
+      <div class="mini">
+        <div class="miniLabel">Completed Today</div>
+        <div class="miniValue" id="todayDone">0</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Loadout</h3>
+      <div class="loadout">
+        <button class="emojiBtn" data-emoji="🧑‍🚀">🧑‍🚀</button>
+        <button class="emojiBtn" data-emoji="🧙‍♂️">🧙‍♂️</button>
+        <button class="emojiBtn" data-emoji="🥷">🥷</button>
+        <button class="emojiBtn" data-emoji="🗡️">🗡️</button>
+        <button class="emojiBtn" data-emoji="🦸‍♂️">🦸‍♂️</button>
+        <button class="emojiBtn" data-emoji="🧠">🧠</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Quick Templates</h3>
+      <div class="templates">
+        <button class="btn ghost" id="tplStudy">📚 Study Pack</button>
+        <button class="btn ghost" id="tplFitness">🏋🏽 Fitness Pack</button>
+        <button class="btn ghost" id="tplClean">🧹 Clean Pack</button>
+      </div>
+
+      <p class="hint small">
+        Templates add quests instantly so you don’t have to type everything.
+      </p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
